@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Michael Johnson.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -103,7 +103,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -111,6 +111,32 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
+    r = circle.radius
+    x1 = circle.center.x
+    y1 = circle.center.y
+    start_x = rectangle.get_upper_left_corner().x
+    start_y = rectangle.get_upper_left_corner().y
+    end_y = rectangle.get_lower_right_corner().y
+    end_x = rectangle.get_lower_right_corner().x
+    c1_color = rectangle.outline_color
+
+    circle = rg.Circle(rg.Point(x1, y1), r)
+    rectangle = rg.Rectangle(rg.Point(start_x, start_y), rg.Point(end_x, end_y))
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    line = rg.Line(rg.Point(start_x, start_y), rg.Point(end_x, end_y))
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.fill_color = c1_color
+    window.render()
+
+
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
